@@ -1,4 +1,8 @@
 spring:
+  data:
+    mongodb:
+      username: yakuza
+      password: greatpassword
   r2dbc:
     url: r2dbc:pool:mysql://localhost:3306/test
     username: yakuza
