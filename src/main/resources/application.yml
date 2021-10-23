@@ -1,0 +1,9 @@
+spring:
+  r2dbc:
+    url: r2dbc:pool:mysql://localhost:3306/test
+    username: yakuza
+    password: greatpassword
+    pool:
+      validation-query: SELECT 1
+server:
+  port: 8089

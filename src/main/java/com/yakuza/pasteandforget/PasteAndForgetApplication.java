@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PasteandforgetApplication {
+public class PasteAndForgetApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PasteandforgetApplication.class, args);
+		SpringApplication.run(PasteAndForgetApplication.class, args);
 	}
 
 }

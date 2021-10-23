@@ -1,0 +1,8 @@
+services:
+  mysql:
+    image: mysql:8.0.27
+    container_name: paste-and-forget-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: yakuza-secret-root
+      MYSQL_USER: yakuza
+      MYSQL_PASSWORD: greatpassword
