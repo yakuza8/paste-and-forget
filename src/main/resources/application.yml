@@ -1,12 +1,12 @@
 spring:
   data:
     mongodb:
-      username: yakuza
-      password: greatpassword
+      username: user
+      password: pass
   r2dbc:
-    url: r2dbc:pool:mysql://localhost:3306/test
-    username: yakuza
-    password: greatpassword
+    url: r2dbc:pool:mysql://localhost:3306/paste_and_forget
+    username: user
+    password: pass
     pool:
       validation-query: SELECT 1
 server:

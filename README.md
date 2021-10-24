@@ -4,9 +4,23 @@ Something like pastebin but with spring webflux (hopefully)
 ## Execution
 
 ```shell
-# To run docker instance first pull the image
-sudo docker pull mysql:latest
+# Never ending helper command
+docker compose up
+```
 
-# And run the image
-sudo  docker run --name paste-and-forget-mysql -e MYSQL_ROOT_PASSWORD=yakuza-secret-root -e MYSQL_USER=yakuza -e MYSQL_PASSWORD=greatpassword -d mysql:latest
+## To connect MySQL admin page
+
+```yaml
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  container_name: pma
+  links:
+    - mysql
+  environment:
+    PMA_HOST: mysql
+    PMA_PORT: 3306
+    PMA_ARBITRARY: 1
+  restart: always
+  ports:
+    - 8081:80
 ```

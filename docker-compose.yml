@@ -4,16 +4,16 @@ services:
     container_name: paste-and-forget-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: yakuza-secret-root
-      MYSQL_USER: yakuza
-      MYSQL_PASSWORD: greatpassword
-      
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: paste_and_forget
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
   mongo:
     image: mongo:latest
     container_name: paste-and-forget-mongo
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: yakuza
-      MONGO_INITDB_ROOT_PASSWORD: greatpassword
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
     ports:
       - 27017:27017
