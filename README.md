@@ -29,5 +29,6 @@ phpmyadmin:
 
 ```shell
 # To order by the date time
+cd ./migrations
 touch V`date +%s`__description.sql
 ```
