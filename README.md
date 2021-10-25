@@ -24,3 +24,10 @@ phpmyadmin:
   ports:
     - 8081:80
 ```
+
+## Migrations
+
+```shell
+# To order by the date time
+touch V`date +%s`__description.sql
+```

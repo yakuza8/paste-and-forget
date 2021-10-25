@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 /**
  * Data model for representation of a paste as metadata
@@ -43,12 +43,12 @@ public class Paste {
      */
     @Column("created_at")
     @CreatedDate
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     /**
      * The tentative removal time of the paste which is calculated current time + expiration minutes amount
      */
     @Column("expires_at")
-    private LocalDateTime expiresAt;
+    private Instant expiresAt;
 
 }
