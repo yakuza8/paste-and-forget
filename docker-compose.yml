@@ -3,6 +3,8 @@ services:
     image: mysql:latest
     container_name: paste-and-forget-mysql
     restart: always
+    volumes:
+      - ./migrations:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: root_pass
       MYSQL_DATABASE: paste_and_forget
