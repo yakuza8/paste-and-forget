@@ -1,6 +1,5 @@
 package com.yakuza.pasteandforget.dto;
 
-import com.yakuza.pasteandforget.PasteConstants;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
@@ -12,11 +11,11 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PasteRequestDTO {
-    private String shortLink = null;
+    private String shortLink;
 
-    private Integer expirationInMinutes = 24 * 60;
+    private Integer expirationInMinutes;
 
     @NotNull
-    @Size(max = PasteConstants.MAX_PASTE_SIZE)
+    @Size(max = 1024)
     private String content;
 }
