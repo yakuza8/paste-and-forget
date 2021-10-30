@@ -1,7 +1,7 @@
 package com.yakuza.pasteandforget.service;
 
-import com.yakuza.pasteandforget.dto.PasteDTO;
-import com.yakuza.pasteandforget.model.Paste;
+import com.yakuza.pasteandforget.dto.PasteRequestDTO;
+import com.yakuza.pasteandforget.dto.PasteResponseDTO;
 import com.yakuza.pasteandforget.repository.PasteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,23 +12,31 @@ public class PasteService {
     @Autowired
     private PasteRepository pasteRepository;
 
-    public PasteDTO savePaste(PasteDTO pasteDTO) {
+    public PasteResponseDTO savePaste(PasteRequestDTO pasteRequestDTO) {
         return null;
     }
 
-    private Paste convertDtoTOModel(PasteDTO pasteDTO) {
-        return Paste.builder()
-                .shortLink(pasteDTO.getShortLink())
-                .expirationInMinutes(pasteDTO.getExpirationInMinutes())
-                .build();
+    /**
+     * Method that either applies the provided shortlink obtained from the request
+     * or generates a new one which is expected to be unique and will be available
+     * for referring the paste content over file document store
+     *
+     * @param providedShortlink Nullable field fetched over the request
+     * @return Final tentative shortlink of the given paste content
+     */
+    public String applyOrAssignShortlink(String providedShortlink) {
+        if (providedShortlink == null) {
+            providedShortlink = generateRandomShortlink();
+        }
+        return providedShortlink;
     }
 
-    private PasteDTO convertModelToDto(Paste paste) {
-        return PasteDTO.builder()
-                .shortLink(paste.getShortLink())
-                .expirationInMinutes(paste.getExpirationInMinutes())
-                .createdAt(paste.getCreatedAt())
-                .expiresAt(paste.getExpiresAt())
-                .build();
+    private String generateRandomShortlink() {
+        return null;
     }
+
+    private boolean testRandomlyGeneratedShortlinkToBeUnique(String generatedShortlink) {
+        return true;
+    }
+
 }

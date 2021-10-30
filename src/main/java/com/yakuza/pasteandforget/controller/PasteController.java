@@ -1,6 +1,7 @@
 package com.yakuza.pasteandforget.controller;
 
-import com.yakuza.pasteandforget.dto.PasteDTO;
+import com.yakuza.pasteandforget.dto.PasteRequestDTO;
+import com.yakuza.pasteandforget.dto.PasteResponseDTO;
 import com.yakuza.pasteandforget.service.PasteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,8 @@ public class PasteController {
 
     @PostMapping("/paste")
     @ResponseStatus
-    public PasteDTO createProduct(@RequestBody PasteDTO pasteDTO) {
-        return pasteService.savePaste(pasteDTO);
+    public PasteResponseDTO createProduct(@RequestBody PasteRequestDTO pasteRequestDTO) {
+        return pasteService.savePaste(pasteRequestDTO);
     }
 
 }

@@ -1,10 +1,7 @@
 package com.yakuza.pasteandforget.dto;
 
-import com.yakuza.pasteandforget.PasteConstants;
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.Instant;
 
 @Data
@@ -12,14 +9,10 @@ import java.time.Instant;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PasteDTO {
+public class PasteResponseDTO {
     private String shortLink;
 
     private Integer expirationInMinutes;
-
-    @NotNull
-    @Size(max = PasteConstants.MAX_PASTE_SIZE)
-    private String content;
 
     private Instant createdAt;
 
