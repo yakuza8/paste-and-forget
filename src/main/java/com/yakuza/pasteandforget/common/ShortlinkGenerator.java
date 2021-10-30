@@ -10,6 +10,8 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.UUID;
 
+import static com.yakuza.pasteandforget.PasteConstants.MAX_SHORTLINK_LENGTH;
+
 public class ShortlinkGenerator {
     private final static String MD_ALGORITHM = "MD5";
     private static Logger logger = LoggerFactory.getLogger(ShortlinkGenerator.class);
@@ -21,7 +23,8 @@ public class ShortlinkGenerator {
         UUID uuid = UUID.randomUUID();
         // Combine them to be digested by md5 and then base64
         String shortlinkHash = uuid.toString() + seed;
-        return base64(md5(shortlinkHash));
+        String hash = base64(md5(shortlinkHash));
+        return hash.substring(0, MAX_SHORTLINK_LENGTH > hash.length() ? hash.length() : MAX_SHORTLINK_LENGTH);
     }
 
     private static String md5(String shortlinkHash) {
