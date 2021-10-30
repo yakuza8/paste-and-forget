@@ -11,23 +11,20 @@ import java.util.Base64;
 import java.util.UUID;
 
 public class ShortlinkGenerator {
-
     private final static String MD_ALGORITHM = "MD5";
-
     private static Logger logger = LoggerFactory.getLogger(ShortlinkGenerator.class);
 
     public static String generateShortlink() {
-        return base64(md5());
-    }
-
-    private static String md5() {
         // Get random seed as time
         Instant seed = Instant.now();
         // But also add another randomness as applicable
         UUID uuid = UUID.randomUUID();
-        // Combine them to be digested by md5
+        // Combine them to be digested by md5 and then base64
         String shortlinkHash = uuid.toString() + seed;
+        return base64(md5(shortlinkHash));
+    }
 
+    private static String md5(String shortlinkHash) {
         try {
             MessageDigest md = MessageDigest.getInstance(MD_ALGORITHM);
             md.update(shortlinkHash.getBytes(), 0, shortlinkHash.length());
@@ -41,5 +38,4 @@ public class ShortlinkGenerator {
     private static String base64(String shortlinkHash) {
         return Base64.getUrlEncoder().encodeToString(shortlinkHash.getBytes());
     }
-
 }
