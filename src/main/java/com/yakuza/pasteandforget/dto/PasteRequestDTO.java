@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 public class PasteRequestDTO {
     private String shortLink;
 
-    private Integer expirationInMinutes;
+    private Integer expirationInMinutes = 24 * 60;
 
     @NotNull
     @Size(max = 1024)
