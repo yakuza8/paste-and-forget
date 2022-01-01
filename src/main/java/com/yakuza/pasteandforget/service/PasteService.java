@@ -1,10 +1,13 @@
 package com.yakuza.pasteandforget.service;
 
+import com.yakuza.pasteandforget.common.ShortlinkGenerator;
 import com.yakuza.pasteandforget.dto.PasteRequestDTO;
 import com.yakuza.pasteandforget.dto.PasteResponseDTO;
+import com.yakuza.pasteandforget.repository.PasteContentRepository;
 import com.yakuza.pasteandforget.repository.PasteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 public class PasteService {
@@ -12,7 +15,11 @@ public class PasteService {
     @Autowired
     private PasteRepository pasteRepository;
 
+    @Autowired
+    private PasteContentRepository pasteContentRepository;
+
     public PasteResponseDTO savePaste(PasteRequestDTO pasteRequestDTO) {
+        String shortlink = applyOrAssignShortlink(pasteRequestDTO.getShortLink());
         return null;
     }
 
@@ -32,11 +39,19 @@ public class PasteService {
     }
 
     private String generateRandomShortlink() {
-        return null;
+        String shortlink = ShortlinkGenerator.generateShortlink();
+        while (Boolean.TRUE.equals(testRandomlyGeneratedShortlinkToBeUnique(shortlink).block())) {
+            shortlink = ShortlinkGenerator.generateShortlink();
+        }
+        return shortlink;
     }
 
-    private boolean testRandomlyGeneratedShortlinkToBeUnique(String generatedShortlink) {
-        return true;
+    /**
+     * @param generatedShortlink
+     * @return Whether there is a record with the given generated shortlink
+     */
+    private Mono<Boolean> testRandomlyGeneratedShortlinkToBeUnique(String generatedShortlink) {
+        return pasteContentRepository.findFirstByShortlink(generatedShortlink).hasElement();
     }
 
 }
