@@ -3,6 +3,7 @@ package com.yakuza.pasteandforget.controller;
 import com.yakuza.pasteandforget.dto.PasteRequestDTO;
 import com.yakuza.pasteandforget.dto.PasteResponseDTO;
 import com.yakuza.pasteandforget.service.PasteService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class PasteController {
 
     @PostMapping("/paste")
     @ResponseStatus
-    public Mono<PasteResponseDTO> createProduct(@RequestBody PasteRequestDTO pasteRequestDTO) {
+    public Mono<PasteResponseDTO> createProduct(@Valid @RequestBody PasteRequestDTO pasteRequestDTO) {
         return pasteService.savePaste(pasteRequestDTO);
     }
 

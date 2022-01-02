@@ -10,9 +10,6 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import static com.yakuza.pasteandforget.PasteConstants.MAX_PASTE_SIZE;
-import static com.yakuza.pasteandforget.PasteConstants.MAX_EXPIRATION_IN_MINUTES;
-import static com.yakuza.pasteandforget.PasteConstants.MAX_SHORTLINK_LENGTH;
 import static com.yakuza.pasteandforget.PasteConstants.DEFAULT_EXPIRATION_IN_MINUTES;
 
 @Data
@@ -21,14 +18,14 @@ import static com.yakuza.pasteandforget.PasteConstants.DEFAULT_EXPIRATION_IN_MIN
 @NoArgsConstructor
 @AllArgsConstructor
 public class PasteRequestDTO {
-    @Size(max = MAX_SHORTLINK_LENGTH, message = "Custom shortlink cannot exceed of size 12")
+    @Size(max = 12, message = "Custom shortlink cannot exceed of size 12")
     private String shortLink;
 
     @PositiveOrZero(message = "Expiration should be positive value")
-    @Max(value = MAX_EXPIRATION_IN_MINUTES, message = "Required max expiration in minutes is 1440")
+    @Max(value = 1440, message = "Required max expiration in minutes is 1440")
     private Integer expirationInMinutes = DEFAULT_EXPIRATION_IN_MINUTES;
 
     @NotBlank(message = "A payload for the content is expected and cannot be blank")
-    @Size(max = MAX_PASTE_SIZE, message = "Required max content size is 2048")
+    @Size(max = 2048, message = "Required max content size is 2048 characters")
     private String content;
 }
