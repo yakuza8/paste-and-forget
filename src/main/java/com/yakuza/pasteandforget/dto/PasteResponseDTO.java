@@ -1,6 +1,10 @@
 package com.yakuza.pasteandforget.dto;
 
-import lombok.*;
+import lombok.Data;
+import lombok.ToString;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.time.Instant;
 
