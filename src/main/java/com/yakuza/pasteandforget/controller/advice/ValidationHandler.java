@@ -10,7 +10,7 @@ import org.springframework.web.bind.support.WebExchangeBindException;
 
 @ControllerAdvice
 public class ValidationHandler {
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(WebExchangeBindException.class)
     public ResponseEntity<List<String>> handleException(WebExchangeBindException e) {
         var errors = e.getBindingResult()
                 .getAllErrors()

@@ -21,8 +21,8 @@ public class PasteService {
     private PasteContentRepository pasteContentRepository;
 
     public Mono<PasteResponseDTO> savePaste(PasteRequestDTO pasteRequestDTO) {
-        String shortlink = applyOrAssignShortlink(pasteRequestDTO.getShortLink());
-        pasteRequestDTO.setShortLink(shortlink);
+        String shortlink = applyOrAssignShortlink(pasteRequestDTO.getShortlink());
+        pasteRequestDTO.setShortlink(shortlink);
 
         return savePasteContent(pasteRequestDTO).flatMap(
                 pasteContent -> savePasteInformation(pasteRequestDTO, pasteContent).flatMap(
@@ -68,13 +68,13 @@ public class PasteService {
     }
 
     private Mono<PasteContent> savePasteContent(PasteRequestDTO pasteRequestDTO) {
-        PasteContent content = new PasteContent(null, pasteRequestDTO.getShortLink(), pasteRequestDTO.getContent());
+        PasteContent content = new PasteContent(null, pasteRequestDTO.getShortlink(), pasteRequestDTO.getContent());
         return pasteContentRepository.save(content);
     }
 
     private Mono<Paste> savePasteInformation(PasteRequestDTO pasteRequestDTO, PasteContent pasteContent) {
         Paste paste = new Paste(
-                pasteRequestDTO.getShortLink(),
+                pasteRequestDTO.getShortlink(),
                 pasteContent.getId(),
                 pasteRequestDTO.getExpirationInMinutes(),
                 null,

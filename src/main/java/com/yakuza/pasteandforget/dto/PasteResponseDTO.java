@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PasteResponseDTO {
-    private String shortLink;
+    private String shortlink;
 
     private Integer expirationInMinutes;
 

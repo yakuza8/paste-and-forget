@@ -28,7 +28,7 @@ public class Paste {
      */
     @Id
     @Column("shortlink")
-    private String shortLink;
+    private String shortlink;
 
     /**
      * The path to react actual content of paste over the document store

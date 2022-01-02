@@ -19,7 +19,7 @@ import static com.yakuza.pasteandforget.PasteConstants.DEFAULT_EXPIRATION_IN_MIN
 @AllArgsConstructor
 public class PasteRequestDTO {
     @Size(max = 12, message = "Custom shortlink cannot exceed of size 12")
-    private String shortLink;
+    private String shortlink;
 
     @PositiveOrZero(message = "Expiration should be positive value")
     @Max(value = 1440, message = "Required max expiration in minutes is 1440")
