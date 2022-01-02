@@ -1,12 +1,11 @@
 package com.yakuza.pasteandforget.dto;
 
+import java.time.Instant;
 import lombok.Data;
 import lombok.ToString;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-
-import java.time.Instant;
 
 @Data
 @ToString

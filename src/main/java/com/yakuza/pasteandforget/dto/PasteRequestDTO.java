@@ -1,10 +1,8 @@
 package com.yakuza.pasteandforget.dto;
 
-
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-
 import lombok.ToString;
 import lombok.Data;
 import lombok.Builder;
