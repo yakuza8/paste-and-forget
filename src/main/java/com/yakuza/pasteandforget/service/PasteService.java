@@ -9,10 +9,7 @@ import com.yakuza.pasteandforget.repository.PasteContentRepository;
 import com.yakuza.pasteandforget.repository.PasteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.function.Function;
 
 @Service
 public class PasteService {
@@ -57,10 +54,8 @@ public class PasteService {
     }
 
     private String generateRandomShortlink() {
-        String shortlink = ShortlinkGenerator.generateShortlink();
-
-        testRandomlyGeneratedShortlinkToBeUnique(generateRandomShortlink()).repeatWhenEmpty()
-        return shortlink;
+        // TODO Add retry logic over here if any record exists
+        return ShortlinkGenerator.generateShortlink();
     }
 
     /**
