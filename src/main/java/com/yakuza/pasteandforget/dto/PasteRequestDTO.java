@@ -1,5 +1,6 @@
 package com.yakuza.pasteandforget.dto;
 
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -20,13 +21,14 @@ import static com.yakuza.pasteandforget.PasteConstants.DEFAULT_EXPIRATION_IN_MIN
 @NoArgsConstructor
 @AllArgsConstructor
 public class PasteRequestDTO {
-    @Size(max = MAX_SHORTLINK_LENGTH)
+    @Size(max = MAX_SHORTLINK_LENGTH, message = "Custom shortlink cannot exceed of size 12")
     private String shortLink;
 
-    @Max(value = MAX_EXPIRATION_IN_MINUTES)
+    @PositiveOrZero(message = "Expiration should be positive value")
+    @Max(value = MAX_EXPIRATION_IN_MINUTES, message = "Required max expiration in minutes is 1440")
     private Integer expirationInMinutes = DEFAULT_EXPIRATION_IN_MINUTES;
 
-    @NotBlank
-    @Size(max = MAX_PASTE_SIZE)
+    @NotBlank(message = "A payload for the content is expected and cannot be blank")
+    @Size(max = MAX_PASTE_SIZE, message = "Required max content size is 2048")
     private String content;
 }

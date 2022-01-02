@@ -47,6 +47,7 @@ public class PasteService {
      * @return Final tentative shortlink of the given paste content
      */
     public String applyOrAssignShortlink(String providedShortlink) {
+        // TODO User defined shortlink can already exist
         if (providedShortlink == null) {
             providedShortlink = generateRandomShortlink();
         }
