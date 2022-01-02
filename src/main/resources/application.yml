@@ -9,5 +9,7 @@ spring:
     password: pass
     pool:
       validation-query: SELECT 1
+    properties:
+      ssl: false
 server:
   port: 8089
